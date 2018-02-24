@@ -2,13 +2,14 @@
 # This script blocks telemetry related domains via the hosts file and related
 # IPs via Windows Firewall.
 
-Import-Module -DisableNameChecking $PSScriptRoot\..\lib\force-mkdir.psm1
-
-echo "Disabling telemetry via Group Policies"
+Write-Verbose "Disabling telemetry via Group Policies"
 force-mkdir "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection"
-sp "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" "AllowTelemetry" 0
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "AllowTelemetry" -Value 0
 
-echo "Adding telemetry domains to hosts file"
+
+<#
+#Skiping Hosts File Manipulation
+Write-Verbose "Adding telemetry domains to hosts file"
 $hosts_file = "$env:systemroot\System32\drivers\etc\hosts"
 $domains = @(
     "a-0001.a-msedge.net"
@@ -149,14 +150,15 @@ $domains = @(
     "m.hotmail.com"
     "s.gateway.messenger.live.com"
 )
-echo "" | Out-File -Encoding ASCII -Append $hosts_file
+write-verbose "" | Out-File -Encoding ASCII -Append $hosts_file
 foreach ($domain in $domains) {
     if (-Not (Select-String -Path $hosts_file -Pattern $domain)) {
-        echo "0.0.0.0 $domain" | Out-File -Encoding ASCII -Append $hosts_file
+        write-verbose "0.0.0.0 $domain" | Out-File -Encoding ASCII -Append $hosts_file
     }
 }
+#>
 
-echo "Adding telemetry ips to firewall"
+Write-Verbose "Adding telemetry ips to firewall"
 $ips = @(
     "134.170.30.202"
     "137.116.81.24"
@@ -169,6 +171,6 @@ $ips = @(
     "65.52.108.33"
     "65.55.108.23"
 )
+
 Remove-NetFirewallRule -DisplayName "Block Telemetry IPs" -ErrorAction SilentlyContinue
-New-NetFirewallRule -DisplayName "Block Telemetry IPs" -Direction Outbound `
-    -Action Block -RemoteAddress ([string[]]$ips)
+New-NetFirewallRule -DisplayName "Block Telemetry IPs" -Direction Outbound -Action Block -RemoteAddress ([string[]]$ips)

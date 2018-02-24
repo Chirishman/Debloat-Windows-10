@@ -1,50 +1,64 @@
 #   Description
-# This script will apply MarkC's mouse acceleration fix (for 100% DPI) and
-# disable some accessibility features regarding keyboard input.  Additional
-# some UI elements will be changed.
+# This script will disable some accessibility features regarding keyboard input.
+# Additionaly it will set some visibility/UI elements will be changed.
 
-Import-Module -DisableNameChecking $PSScriptRoot\..\lib\force-mkdir.psm1
-Import-Module -DisableNameChecking $PSScriptRoot\..\lib\take-own.psm1
-
-echo "Elevating priviledges for this process"
+write-verbose "Elevating priviledges for this process"
 do {} until (Elevate-Privileges SeTakeOwnershipPrivilege)
 
-echo "Apply MarkC's mouse acceleration fix"
-sp "HKCU:\Control Panel\Mouse" "MouseSensitivity" "10"
-sp "HKCU:\Control Panel\Mouse" "MouseSpeed" "0"
-sp "HKCU:\Control Panel\Mouse" "MouseThreshold1" "0"
-sp "HKCU:\Control Panel\Mouse" "MouseThreshold2" "0"
-sp "HKCU:\Control Panel\Mouse" "SmoothMouseXCurve" ([byte[]](0x00, 0x00, 0x00,
-0x00, 0x00, 0x00, 0x00, 0x00, 0xC0, 0xCC, 0x0C, 0x00, 0x00, 0x00, 0x00, 0x00,
-0x80, 0x99, 0x19, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x66, 0x26, 0x00, 0x00,
-0x00, 0x00, 0x00, 0x00, 0x33, 0x33, 0x00, 0x00, 0x00, 0x00, 0x00))
-sp "HKCU:\Control Panel\Mouse" "SmoothMouseYCurve" ([byte[]](0x00, 0x00, 0x00,
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x38, 0x00, 0x00, 0x00, 0x00, 0x00,
-0x00, 0x00, 0x70, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xA8, 0x00, 0x00,
-0x00, 0x00, 0x00, 0x00, 0x00, 0xE0, 0x00, 0x00, 0x00, 0x00, 0x00))
+<# Skip Mouse Fix
+write-verbose "Apply MarkC's mouse acceleration fix"
+@(
+	@(
+		"MouseSensitivity",
+		10
+	),@(
+		"MouseSpeed",
+		0
+	),@(
+		"MouseThreshold1",
+		0
+	),@(
+		"MouseThreshold2",
+		0
+	),@(
+		"SmoothMouseXCurve",
+		([byte[]](0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC0, 0xCC, 0x0C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x99, 0x19, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x66, 0x26, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x33, 0x33, 0x00, 0x00, 0x00, 0x00, 0x00))
+	),@(
+		"SmoothMouseYCurve",
+		([byte[]](0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x38, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x70, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xA8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xE0, 0x00, 0x00, 0x00, 0x00, 0x00))
+	)
+) | %{
+	Set-ItemProperty -Path "HKCU:\Control Panel\Mouse" -Name $_[0] -Value $_[1]
+}
+#>
 
-echo "Disable mouse pointer hiding"
-sp "HKCU:\Control Panel\Desktop" "UserPreferencesMask" ([byte[]](0x9e,
+<#
+write-verbose "Disable mouse pointer hiding"
+Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "UserPreferencesMask" -Value ([byte[]](0x9e,
 0x1e, 0x06, 0x80, 0x12, 0x00, 0x00, 0x00))
+#>
 
-echo "Disable easy access keyboard stuff"
-sp "HKCU:\Control Panel\Accessibility\StickyKeys" "Flags" "506"
-sp "HKCU:\Control Panel\Accessibility\Keyboard Response" "Flags" "122"
-sp "HKCU:\Control Panel\Accessibility\ToggleKeys" "Flags" "58"
+write-verbose "Disable easy access keyboard stuff"
+Set-ItemProperty -Path "HKCU:\Control Panel\Accessibility\StickyKeys" -Name "Flags" -Value 506
+Set-ItemProperty -Path "HKCU:\Control Panel\Accessibility\Keyboard Response" -Name "Flags" -Value 122
+Set-ItemProperty -Path "HKCU:\Control Panel\Accessibility\ToggleKeys" -Name "Flags" -Value 58
 
-echo "Restoring old volume slider"
+<#
+write-verbose "Restoring old volume slider"
 force-mkdir "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\MTCUVC"
-sp "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\MTCUVC" "EnableMtcUvc" 0
+Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\MTCUVC" -Name "EnableMtcUvc" -Value 0
+#>
 
-echo "Setting folder view options"
-sp "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "Hidden" 1
-sp "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "HideFileExt" 0
-sp "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "HideDrivesWithNoMedia" 0
+write-verbose "Setting folder view options"
+Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "Hidden" -Value 1
+Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 0
+Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideDrivesWithNoMedia" -Value 0
 
-echo "Setting default explorer view to This PC"
-sp "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "LaunchTo" 1
+write-verbose "Setting default explorer view to This PC"
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "LaunchTo" -Value 1
 
-echo "Removing user folders under This PC"
+<#
+write-verbose "Removing user folders under This PC"
 # Remove Desktop from This PC
 rm "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}"
 rm "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}"
@@ -73,7 +87,8 @@ rm "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpac
 rm "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{f86fa3ab-70d2-4fc7-9c99-fcbf05467f3a}"
 rm "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{A0953C92-50DC-43bf-BE83-3742FED03C9C}"
 rm "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{f86fa3ab-70d2-4fc7-9c99-fcbf05467f3a}"
+#>
 
-#echo "Disabling tile push notification"
+#write-verbose "Disabling tile push notification"
 #force-mkdir "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications"
 #sp "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications" "NoTileApplicationNotification" 1
