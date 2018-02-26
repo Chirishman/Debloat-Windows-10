@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F5034706-568F-408A-B7B3-4D38C6DB8A32}") = "Win10Bootstrap", "Win10Bootstrap.pssproj", "{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5E6AF1A0-8D6E-426E-9F63-9434271C9AC5} = {5E6AF1A0-8D6E-426E-9F63-9434271C9AC5}
+	EndProjectSection
 EndProject
 Project("{F5034706-568F-408A-B7B3-4D38C6DB8A32}") = "Win10BootstrapTools", "Win10BootstrapTools\Win10BootstrapTools.pssproj", "{5E6AF1A0-8D6E-426E-9F63-9434271C9AC5}"
 EndProject

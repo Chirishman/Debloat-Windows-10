@@ -7,6 +7,11 @@
     <RootNamespace>MyApplication</RootNamespace>
     <AssemblyName>MyApplication</AssemblyName>
     <Name>Win10Bootstrap</Name>
+    <PackageAsExecutable>True</PackageAsExecutable>
+    <PackageEntryPoint>Win10Bootstrap.ps1</PackageEntryPoint>
+    <Bundle>True</Bundle>
+    <DebugArguments>
+    </DebugArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -26,6 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="RegFixes\CurrentUser\AntiEdgeHijack.psd1" />
+    <Compile Include="RegFixes\CurrentUser\FixGeneralPrivacySettings.psd1" />
+    <Compile Include="RegFixes\CurrentUser\UITweaks.psd1" />
+    <Compile Include="RegFixes\LocalMachine\AntiEdgeHijack.psd1" />
+    <Compile Include="RegFixes\LocalMachine\DisableAppSuggestions.psd1" />
+    <Compile Include="RegFixes\LocalMachine\DisableTelemetry.psd1" />
+    <Compile Include="RegFixes\LocalMachine\DisableWindowsUpdateSeeding.psd1" />
+    <Compile Include="RegFixes\LocalMachine\FixGeneralPrivacySettings.psd1" />
+    <Compile Include="RegFixes\LocalMachine\UITweaks.psd1" />
     <Compile Include="Steps\02 - Enable-GodMode.ps1" />
     <Compile Include="Steps\01 - Install-BasicSoftware.ps1" />
     <Compile Include="Steps\03 - Block-Telemetry.ps1" />
@@ -33,14 +47,24 @@
     <Compile Include="Steps\06 - Disable-Services.ps1" />
     <Compile Include="Steps\04 - Fix-PrivacySettings.ps1" />
     <Compile Include="Steps\09 - Optimize-UserInterface.ps1" />
-    <Compile Include="Steps\10 - Set-DarkUserInterface.ps1" />
     <Compile Include="Steps\08 - Optimize-WindowsUpdate.ps1" />
     <Compile Include="Steps\07 - Remove-DefaultApps.ps1" />
-    <Compile Include="Steps\99 - Schedule-ChocoUpdate.ps1" />
+    <Compile Include="Steps\10 - Schedule-ChocoUpdate.ps1" />
     <Compile Include="Win10Bootstrap.ps1" />
+    <Compile Include="Win10BootstrapTools\Public\Elevate-Privileges.ps1" />
+    <Compile Include="Win10BootstrapTools\Public\force-mkdir.ps1" />
+    <Compile Include="Win10BootstrapTools\Public\Install-RegistryTweaks.ps1" />
+    <Compile Include="Win10BootstrapTools\Public\Takeown-File.ps1" />
+    <Compile Include="Win10BootstrapTools\Public\Takeown-Folder.ps1" />
+    <Compile Include="Win10BootstrapTools\Public\Takeown-Registry.ps1" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="RegFixes\" />
+    <Folder Include="RegFixes\LocalMachine\" />
+    <Folder Include="RegFixes\CurrentUser\" />
     <Folder Include="Steps\" />
+    <Folder Include="Win10BootstrapTools\" />
+    <Folder Include="Win10BootstrapTools\Public" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="Build" />

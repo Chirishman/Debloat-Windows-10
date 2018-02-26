@@ -14,22 +14,16 @@ $apps = @(
 		"Microsoft.BingNews"
 		"Microsoft.BingSports"
 		#"Microsoft.BingWeather"
-		#"Microsoft.FreshPaint"
 		"Microsoft.Getstarted"
 		"Microsoft.MicrosoftOfficeHub"
 		"Microsoft.MicrosoftSolitaireCollection"
-		#"Microsoft.MicrosoftStickyNotes"
 		"Microsoft.Office.OneNote"
 		#"Microsoft.OneConnect"
 		"Microsoft.People"
 		"Microsoft.SkypeApp"
-		#"Microsoft.Windows.Photos"
-		"Microsoft.WindowsAlarms"
-		#"Microsoft.WindowsCalculator"
-		"Microsoft.WindowsCamera"
+		#"Microsoft.WindowsCamera"
 		"Microsoft.WindowsMaps"
 		"Microsoft.WindowsPhone"
-		#"Microsoft.WindowsSoundRecorder"
 		#"Microsoft.WindowsStore"
 		"Microsoft.XboxApp"
 		"Microsoft.ZuneMusic"
@@ -67,20 +61,10 @@ $apps = @(
 		"D52A8D61.FarmVille2CountryEscape"
 		"TuneIn.TuneInRadio"
 		"GAMELOFTSA.Asphalt8Airborne"
-		#"TheNewYorkTimes.NYTCrossword"
 		"DB6EA5DB.CyberLinkMediaSuiteEssentials"
 		"Facebook.Facebook"
 		"flaregamesGmbH.RoyalRevolt2"
 		"Playtika.CaesarsSlotsFreeCasino"
-
-    # apps which cannot be removed using Remove-AppxPackage
-		#"Microsoft.BioEnrollment"
-		#"Microsoft.MicrosoftEdge"
-		#"Microsoft.Windows.Cortana"
-		#"Microsoft.WindowsFeedback"
-		#"Microsoft.XboxGameCallableUI"
-		#"Microsoft.XboxIdentityProvider"
-		#"Windows.ContactSupport"
 )
 
 foreach ($app in $apps) {
@@ -93,6 +77,4 @@ foreach ($app in $apps) {
         Remove-AppxProvisionedPackage -Online
 }
 
-# Prevents "Suggested Applications" returning
-force-mkdir "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Cloud Content"
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Cloud Content" -Name "DisableWindowsConsumerFeatures" -Value 1
+Import-PowerShellDataFile -Path "$PSScriptRoot\..\RegFixes\LocalMachine\DisableAppSuggestions.psd1" | Install-RegistryTweaks -Verbose

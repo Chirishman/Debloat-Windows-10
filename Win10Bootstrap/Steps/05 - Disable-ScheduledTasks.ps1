@@ -1,8 +1,7 @@
 #   Description:
-# This script will disable certain scheduled tasks. Work in progress!
+# This script will disable certain scheduled tasks.
 
 $tasks = @(
-    # Windows base scheduled tasks
     "\Microsoft\Windows\.NET Framework\.NET Framework NGEN v4.0.30319",
     "\Microsoft\Windows\.NET Framework\.NET Framework NGEN v4.0.30319 64",
     "\Microsoft\Windows\.NET Framework\.NET Framework NGEN v4.0.30319 64 Critical",
@@ -18,13 +17,6 @@ $tasks = @(
     "\Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector",
     "\Microsoft\Windows\Feedback\Siuf\DmClient",
     "\Microsoft\Windows\Mobile Broadband Accounts\MNO Metadata Parser"
-	
-	<# If not using Windows Defender
-    "\Microsoft\Windows\Windows Defender\Windows Defender Cache Maintenance",
-    "\Microsoft\Windows\Windows Defender\Windows Defender Cleanup",
-    "\Microsoft\Windows\Windows Defender\Windows Defender Scheduled Scan",
-    "\Microsoft\Windows\Windows Defender\Windows Defender Verification"
-	#>
 )
 
 foreach ($task in $tasks) {
