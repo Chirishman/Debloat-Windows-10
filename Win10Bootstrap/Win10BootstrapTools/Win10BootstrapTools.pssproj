@@ -31,11 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Public\Elevate-Privileges.ps1" />
-    <Compile Include="Public\force-mkdir.ps1" />
     <Compile Include="Public\Install-RegistryTweaks.ps1" />
-    <Compile Include="Public\Takeown-File.ps1" />
-    <Compile Include="Public\Takeown-Folder.ps1" />
-    <Compile Include="Public\Takeown-Registry.ps1" />
     <Compile Include="Win10BootstrapTools.psd1" />
     <Compile Include="Win10BootstrapTools.psm1" />
     <Compile Include="Win10BootstrapTools.tests.ps1" />

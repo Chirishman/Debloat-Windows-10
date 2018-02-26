@@ -54,11 +54,7 @@
     <Compile Include="User\03 - Optimize-UserInterface.ps1" />
     <Compile Include="Win10Bootstrap.ps1" />
     <Compile Include="Win10BootstrapTools\Public\Elevate-Privileges.ps1" />
-    <Compile Include="Win10BootstrapTools\Public\force-mkdir.ps1" />
     <Compile Include="Win10BootstrapTools\Public\Install-RegistryTweaks.ps1" />
-    <Compile Include="Win10BootstrapTools\Public\Takeown-File.ps1" />
-    <Compile Include="Win10BootstrapTools\Public\Takeown-Folder.ps1" />
-    <Compile Include="Win10BootstrapTools\Public\Takeown-Registry.ps1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Machine\" />
