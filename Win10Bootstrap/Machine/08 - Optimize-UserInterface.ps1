@@ -5,7 +5,6 @@
 write-verbose "Elevating priviledges for this process"
 do {} until (Elevate-Privileges SeTakeOwnershipPrivilege)
 
-Import-PowerShellDataFile -Path "$PSScriptRoot\..\RegFixes\CurrentUser\UITweaks.psd1" | Install-RegistryTweaks -Verbose
 Import-PowerShellDataFile -Path "$PSScriptRoot\..\RegFixes\LocalMachine\UITweaks.psd1" | Install-RegistryTweaks -Verbose
 
 $BaseKeys = @(
