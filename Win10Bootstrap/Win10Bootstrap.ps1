@@ -1,7 +1,12 @@
-﻿$VerbosePreference = 'Continue'
+﻿Param(
+	[ValidateSet('User','Machine','Both')][string]$Selector = 'Both'
+)
 
-#Import-Module "$PSScriptRoot\Win10BootstrapTools\Win10BootstrapTools.psd1"
+$VerbosePreference = 'Continue'
 
+Import-Module "$PSScriptRoot\Win10BootstrapTools\Win10BootstrapTools.psd1"
+
+<#
 $Tools = @( Get-ChildItem -Path "$PSScriptRoot\Win10BootstrapTools\Public\*.ps1" -ErrorAction SilentlyContinue )
 
 $Tools | % {
@@ -15,19 +20,34 @@ $Tools | % {
         Write-Error -Message "Failed to dot source $($_.fullname): $_"
     }
 }
+#>
 
-$Steps  = @( Get-ChildItem -Path $PSScriptRoot\Steps\*.ps1 -ErrorAction SilentlyContinue )
+if ($Selector -in @('User','Both')){
+	@( Get-ChildItem -Path $PSScriptRoot\User\*.ps1 -ErrorAction SilentlyContinue ) | % {
+		Try
+		{
+			Write-Verbose -Message "Executing $($_.fullname)"
+			. $_.fullname
+		}
+		Catch
+		{
+			Write-Error -Message "Failed to execute step $($_.fullname): $_"
+		}
+	}
+}
 
-$Steps | % {
-    Try
-    {
-        Write-Verbose -Message "Executing $($_.fullname)"
-        . $_.fullname
-    }
-    Catch
-    {
-        Write-Error -Message "Failed to execute step $($_.fullname): $_"
-    }
+if ($Selector -in @('Machine','Both')){
+	@( Get-ChildItem -Path $PSScriptRoot\Machine\*.ps1 -ErrorAction SilentlyContinue )| % {
+		Try
+		{
+			Write-Verbose -Message "Executing $($_.fullname)"
+			. $_.fullname
+		}
+		Catch
+		{
+			Write-Error -Message "Failed to execute step $($_.fullname): $_"
+		}
+	}
 }
 
 $VerbosePreference = 'SilentlyContinue'
