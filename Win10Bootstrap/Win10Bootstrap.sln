@@ -4,13 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F5034706-568F-408A-B7B3-4D38C6DB8A32}") = "Win10Bootstrap", "Win10Bootstrap.pssproj", "{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5E6AF1A0-8D6E-426E-9F63-9434271C9AC5} = {5E6AF1A0-8D6E-426E-9F63-9434271C9AC5}
-	EndProjectSection
-EndProject
-Project("{F5034706-568F-408A-B7B3-4D38C6DB8A32}") = "Win10BootstrapTools", "Win10BootstrapTools\Win10BootstrapTools.pssproj", "{5E6AF1A0-8D6E-426E-9F63-9434271C9AC5}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Win10Bootstrap", "Win10Bootstrap", "{B316B184-E8C9-4E38-B8C3-939E0F0B2A27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,16 +15,9 @@ Global
 		{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E6AF1A0-8D6E-426E-9F63-9434271C9AC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E6AF1A0-8D6E-426E-9F63-9434271C9AC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E6AF1A0-8D6E-426E-9F63-9434271C9AC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E6AF1A0-8D6E-426E-9F63-9434271C9AC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{5E6AF1A0-8D6E-426E-9F63-9434271C9AC5} = {B316B184-E8C9-4E38-B8C3-939E0F0B2A27}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {343643B9-1419-4BA3-8E7D-2916C12795B3}

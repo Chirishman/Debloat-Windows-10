@@ -31,39 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="RegFixes\CurrentUser\AntiEdgeHijack.psd1" />
-    <Compile Include="RegFixes\CurrentUser\FixGeneralPrivacySettings.psd1" />
-    <Compile Include="RegFixes\CurrentUser\UITweaks.psd1" />
-    <Compile Include="RegFixes\LocalMachine\AntiEdgeHijack.psd1" />
-    <Compile Include="RegFixes\LocalMachine\DisableAppSuggestions.psd1" />
-    <Compile Include="RegFixes\LocalMachine\DisableTelemetry.psd1" />
-    <Compile Include="RegFixes\LocalMachine\DisableWindowsUpdateSeeding.psd1" />
-    <Compile Include="RegFixes\LocalMachine\FixGeneralPrivacySettings.psd1" />
-    <Compile Include="RegFixes\LocalMachine\UITweaks.psd1" />
-    <Compile Include="User\01 - Enable-GodMode.ps1" />
-    <Compile Include="Machine\01 - Install-BasicSoftware.ps1" />
-    <Compile Include="Machine\02 - Block-Telemetry.ps1" />
-    <Compile Include="Machine\04 - Disable-ScheduledTasks.ps1" />
-    <Compile Include="Machine\05 - Disable-Services.ps1" />
-    <Compile Include="Machine\03 - Fix-PrivacySettings.ps1" />
-    <Compile Include="Machine\08 - Optimize-UserInterface.ps1" />
-    <Compile Include="Machine\07 - Optimize-WindowsUpdate.ps1" />
-    <Compile Include="Machine\06 - Remove-DefaultApps.ps1" />
-    <Compile Include="Machine\09 - Schedule-ChocoUpdate.ps1" />
-    <Compile Include="User\02 - Fix-PrivacySettings.ps1" />
-    <Compile Include="User\03 - Optimize-UserInterface.ps1" />
     <Compile Include="Win10Bootstrap.ps1" />
-    <Compile Include="Win10BootstrapTools\Public\Elevate-Privileges.ps1" />
-    <Compile Include="Win10BootstrapTools\Public\Install-RegistryTweaks.ps1" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Machine\" />
-    <Folder Include="User\" />
-    <Folder Include="RegFixes\" />
-    <Folder Include="RegFixes\LocalMachine\" />
-    <Folder Include="RegFixes\CurrentUser\" />
-    <Folder Include="Win10BootstrapTools\" />
-    <Folder Include="Win10BootstrapTools\Public" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="Build" />
