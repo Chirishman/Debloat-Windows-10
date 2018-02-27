@@ -2,71 +2,71 @@
     'HKCU:\Control Panel\International\User Profile'=@{
         'HttpAcceptLanguageOptOut'=@{
             Val=1
-            Type='int'
+            Type='dword'
         }
     }
 	'HKCU:\SOFTWARE\Microsoft\Input\TIPC'=@{
         'Enabled'=@{
             Val=0
-            Type='int'
+            Type='dword'
         }
     }
 	'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo'=@{
         'Enabled'=@{
             Val=0
-            Type='int'
+            Type='dword'
         }
     }
 	'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost'=@{
         'EnableWebContentEvaluation'=@{
             Val=0
-            Type='int'
+            Type='dword'
         }
     }
 	'HKCU:\SOFTWARE\Microsoft\Personalization\Settings'=@{
         'AcceptedPrivacyPolicy'=@{
             Val=0
-            Type='int'
+            Type='dword'
         }
     }
 	'HKCU:\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore'=@{
         'HarvestContacts'=@{
             Val=0
-            Type='int'
+            Type='dword'
         }
     }
 	'HKCU:\SOFTWARE\Microsoft\InputPersonalization'=@{
         'RestrictImplicitInkCollection'=@{
             Val=1
-            Type='int'
+            Type='dword'
         }
 		'RestrictImplicitTextCollection'=@{
             Val=1
-            Type='int'
+            Type='dword'
         }
     }
 	'HKCU:\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\Main'=@{
         'DoNotTrack'=@{
             Val=1
-            Type='int'
+            Type='dword'
         }
     }
 	'HKCU:\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\User\Default\SearchScopes'=@{
         'ShowSearchSuggestionsGlobal'=@{
             Val=0
-            Type='int'
+            Type='dword'
         }
     }
 	'HKCU:\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\FlipAhead'=@{
         'FPEnabled'=@{
             Val=0
-            Type='int'
+            Type='dword'
         }
     }
 	'HKCU:\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\PhishingFilter'=@{
         'EnabledV9'=@{
             Val=0
-            Type='int'
+            Type='dword'
         }
     }
 	'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\LooselyCoupled'=@{

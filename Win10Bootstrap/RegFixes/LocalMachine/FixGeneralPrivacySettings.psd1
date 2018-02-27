@@ -2,11 +2,11 @@
 	'HKLM:\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\features'=@{
         'WiFiSenseCredShared'=@{
             Val=0
-            Type='int'
+            Type='dword'
         }
 		'WiFiSenseOpen'=@{
             Val=0
-            Type='int'
+            Type='dword'
         }
     }
 }

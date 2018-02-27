@@ -2,43 +2,43 @@
     'HKCU:\Control Panel\Accessibility\StickyKeys'=@{
         'Flags'=@{
             Val=506
-            Type='int'
+            Type='dword'
         }
     }
 	'HKCU:\Control Panel\Accessibility\Keyboard Response'=@{
         'Flags'=@{
             Val=122
-            Type='int'
+            Type='dword'
         }
     }
 	'HKCU:\Control Panel\Accessibility\ToggleKeys'=@{
         'Flags'=@{
             Val=58
-            Type='int'
+            Type='dword'
         }
     }
 	'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced'=@{
         'Hidden'=@{
             Val=1
-            Type='int'
+            Type='dword'
         }
         'HideFileExt'=@{
             Val=0
-            Type='int'
+            Type='dword'
         }
 		'HideDrivesWithNoMedia'=@{
             Val=0
-            Type='int'
+            Type='dword'
         }
 		'LaunchTo'=@{
             Val=1
-            Type='int'
+            Type='dword'
         }
     }
 	'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize'=@{
         'AppsUseLightTheme'=@{
             Val=0
-            Type='int'
+            Type='dword'
         }
     }
 }

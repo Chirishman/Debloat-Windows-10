@@ -49,7 +49,7 @@ gci "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplication
 	$SetForAllUsers[$_] = @{
 		"Disabled" = {
 			Val=1
-			Type='int'
+			Type='dword'
 		}
 	}
 }
@@ -69,7 +69,7 @@ $SetForAllUsers["$(
 	)"] = @{
         'FeatureStates'=@{
             Val=828
-            Type='int'
+            Type='dword'
         }
     }
 
