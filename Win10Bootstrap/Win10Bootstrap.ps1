@@ -521,11 +521,11 @@ if ($Selector -in @('Machine','Both')){
 			'HKLM:\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\features'=@{
 				'WiFiSenseCredShared'=@{
 					Val=0
-					Type='int'
+					Type='dword'
 				}
 				'WiFiSenseOpen'=@{
 					Val=0
-					Type='int'
+					Type='dword'
 				}
 			}
 		},
@@ -533,7 +533,7 @@ if ($Selector -in @('Machine','Both')){
 			'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Cloud Content'=@{
 				'DisableWindowsConsumerFeatures'=@{
 					Val=1
-					Type='int'
+					Type='dword'
 				}
 			}
 		},
@@ -541,7 +541,7 @@ if ($Selector -in @('Machine','Both')){
 			'HKLM:\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization'=@{
 				'DODownloadMode'=@{
 					Val=0
-					Type='int'
+					Type='dword'
 				}
 			}
 		},
@@ -550,7 +550,7 @@ if ($Selector -in @('Machine','Both')){
 			'HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection'=@{
 				'AllowTelemetry'=@{
 					Val=0
-					Type='int'
+					Type='dword'
 				}
 			}
 		},
@@ -580,7 +580,7 @@ if ($Selector -in @('Machine','Both')){
 			'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize'=@{
 				'AppsUseLightTheme'=@{
 					Val=0
-					Type='int'
+					Type='dword'
 				}
 			}
 		}
