@@ -133,7 +133,7 @@ if ($Selector -in @('User','Both')){
 		}
 	} | select -ExpandProperty path | %{
 		$SetForAllUsers[$_] = @{
-			"Disabled" = {
+			"Disabled" = @{
 				Val=1
 				Type='dword'
 			}
