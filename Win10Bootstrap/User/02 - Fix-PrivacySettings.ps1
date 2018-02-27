@@ -47,7 +47,7 @@ gci "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplication
 	}
 } | select -ExpandProperty path | %{
 	$SetForAllUsers[$_] = @{
-		"Disabled" = {
+		"Disabled" = @{
 			Val=1
 			Type='dword'
 		}

@@ -16,5 +16,5 @@ $services = @(
 
 foreach ($service in $services) {
     write-verbose "Trying to disable $service"
-    Get-Service -Name $service | Set-Service -StartupType Disabled
+    Get-Service -Name $service | Set-Service -StartupType Disabled -ErrorAction SilentlyContinue
 }

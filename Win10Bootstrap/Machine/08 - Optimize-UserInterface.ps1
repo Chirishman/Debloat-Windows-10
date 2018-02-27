@@ -37,6 +37,6 @@ $FolderKeys = @(
 $BaseKeys | %{
 	$ThisKey = $_
 	$FolderKeys | %{
-		Remove-Item -Path "$(-join($ThisKey,$_))"
+		Remove-Item -Path "$(-join($ThisKey,$_))" -ErrorAction SilentlyContinue
 	}
 }

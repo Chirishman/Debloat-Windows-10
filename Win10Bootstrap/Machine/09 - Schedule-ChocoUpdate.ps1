@@ -9,4 +9,4 @@ $ScheduledJob = @{
 }
 
 #Get-ScheduledJob -Name $ScheduledJob.Name | Set-ScheduledJob @ScheduledJob -RunNow
-Register-ScheduledJob @ScheduledJob
+Register-ScheduledJob @ScheduledJob -ErrorAction SilentlyContinue
